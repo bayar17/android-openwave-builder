@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="ghub" fetch="https://github.com/" />
+  <remote name="gitlab" fetch="https://gitlab.com/" />
+  <remove-project name="platform/external/drm_hwcomposer" />
+  <remove-project name="platform/external/gmmlib" />
+  <remove-project name="platform/external/libdrm" />
+  <remove-project name="platform/external/libva" />
+  <remove-project name="platform/external/libva-utils" />
+  <remove-project name="platform/external/mesa3d" />
+  <remove-project name="platform/external/minigbm" />
+  <remove-project name="platform/external/rust/android-crates-io" />
+  <remove-project name="platform/external/rust/ninja-to-soong" />
+  <project path="device/waydroid/waydroid" name="WayDroid-ATV/android_device_waydroid_waydroid" remote="ghub" clone-depth="1" revision="ce2f57ee276818bf1f68569dedaa7b7e5b7e38ae" upstream="refs/heads/lineage-24.0" />
+  <project path="frameworks/waydroid" name="WayDroid-ATV/android_frameworks_waydroid" clone-depth="1" remote="ghub" revision="b18c6f83c0f97d3c77c73086dfd4e86d62825024" upstream="refs/heads/lineage-20" />
+  <project path="hardware/waydroid" name="WayDroid-ATV/android_hardware_waydroid" remote="ghub" clone-depth="1" revision="8d1ce341272e3bcea1bdaa4312462392a8063fc0" upstream="refs/heads/lineage-21" />
+  <project path="vendor/extra" name="WayDroid-ATV/android_vendor_waydroid" remote="ghub" clone-depth="1" revision="792db3b21f0672999f37e3e244aff0fb1c6a2839" upstream="refs/heads/lineage-24.0-gerrit" />
+  <project path="vendor/waydroid/init" name="WayDroid-ATV/android_vendor_waydroid_init" remote="ghub" clone-depth="1" revision="e97b43d97f70f0d647fdd9d477192f38273cd3e8" upstream="refs/heads/main" />
+  <project path="packages/apps/WaydroidUpdater" name="WayDroid-ATV/android_packages_apps_WaydroidUpdater" remote="ghub" clone-depth="1" revision="e61d1230459830d1421f2bb330c7a8c4f49d597e" upstream="refs/heads/lineage-20" />
+  <project path="external/alsa-lib" name="WayDroid-ATV/android_external_alsa-lib" remote="ghub" clone-depth="1" revision="ca11262cf42c60611635c66253bbf1b41a52c77f" upstream="refs/heads/lineage-20" />
+  <project path="external/alsa-plugins" name="WayDroid-ATV/android_external_alsa-plugins" remote="ghub" clone-depth="1" revision="6d2ebe3cf5b48bc6cc2027b1f60711fabce7d426" upstream="refs/heads/lineage-20" />
+  <project path="external/libsndfile" name="waydroid/android_external_libsndfile" remote="ghub" clone-depth="1" revision="00ab4fa5dcb77d8393c59bc82bf2dda8191f57ce" upstream="refs/heads/dev/lineage-23.2" />
+  <project path="external/pulseaudio" name="WayDroid-ATV/android_external_pulseaudio" remote="ghub" clone-depth="1" revision="4f8b94631ef6cdf053a430152258336d4565958c" upstream="refs/heads/lineage-20" />
+  <project path="external/drm_hwcomposer" name="android-generic/external_drm_hwcomposer" remote="ghub" clone-depth="1" revision="5875f8b4e36b0497b385a314276571a5f182426e" upstream="refs/heads/main" />
+  <project path="external/mesa3d" name="WayDroid-ATV/android_external_mesa3d" remote="ghub" clone-depth="1" revision="d1861f7e541eaf563a64c11e6b6ce6d1507360ee" upstream="refs/heads/lineage-18.1" />
+  <project path="external/minigbm" name="WayDroid-ATV/android_external_minigbm" remote="ghub" clone-depth="1" revision="5f5797cacd14d85fcb8d149d67376b3a79d748a0" upstream="refs/heads/lineage-24.0" />
+  <project path="external/libdrm" name="WayDroid-ATV/android_external_libdrm" remote="ghub" clone-depth="1" revision="7e698192293bfbf3a0e9d4c4bec3a22ae1b055ac" upstream="refs/heads/lineage-24.0" />
+  <project path="external/llvm-project" name="android-generic/external_llvm-project" remote="ghub" clone-depth="1" revision="bd650b421a8ba5c785ad6d8a2a64e304c6994e91" upstream="refs/heads/release_22.x" />
+  <project path="external/rust/hbm" name="WayDroid-ATV/android_external_rust_hbm" remote="ghub" clone-depth="1" revision="92ad93a4d9418b065bf986d77460ef089cda7cdf" upstream="refs/heads/main" />
+  <project path="external/ffmpeg" name="WayDroid-ATV/android_external_ffmpeg" remote="ghub" clone-depth="1" revision="0b23ebd27a384f9223335359e2304dbdf878fc64" upstream="refs/heads/release/7.1/14-x86" />
+  <project path="external/stagefright-plugins" name="WayDroid-ATV/android_external_stagefright-plugins" remote="ghub" clone-depth="1" revision="1bc14018bd637bdd7f0869edf72cfaec6de10c76" upstream="refs/heads/14-x86/ffmpeg-7.1" />
+  <project path="external/libva" name="WayDroid-ATV/android_external_libva" clone-depth="1" remote="ghub" revision="e575c67c1d3e9502be39d41a54d4da1b91477e63" upstream="refs/heads/14-x86" />
+  <project path="external/libva-utils" name="intel/libva-utils" clone-depth="1" remote="ghub" revision="5896b6779d36f83bf483aff62da8aae30ba8d664" upstream="refs/tags/2.23.0" />
+  <project path="vendor/intel/gmmlib" name="intel/gmmlib" clone-depth="1" remote="ghub" revision="0246660b2ade17afc1c9c4c510368fa649ca809f" upstream="refs/tags/intel-gmmlib-22.10.0" />
+  <project path="vendor/intel/media-driver" name="intel/media-driver" clone-depth="1" remote="ghub" revision="1d2d8e96aeaba0471dc7fd0a7e85190519758fc5" upstream="refs/tags/intel-media-26.1.5" />
+  <project path="vendor/intel/vaapi-driver" name="WayDroid-ATV/android_vendor_intel_vaapi-driver" clone-depth="1" remote="ghub" revision="8dd6659c53e66f787e92d38852393c28ba4e0360" upstream="refs/heads/14-x86" />
+  <project path="external/rust/ninja-to-soong" name="WayDroid-ATV/android_external_rust_ninja-to-soong" clone-depth="1" remote="ghub" revision="10730924347d153e96c0a1ecc81796899df6770d" upstream="refs/heads/main" />
+  <project path="prebuilts/mesa-tools" name="WayDroid/android_prebuilts_mesa-tools" groups="pdk" clone-depth="1" remote="ghub" revision="b5de4e0af2f1e76b53b000fb70c18f1757c7e28f" upstream="refs/heads/main" />
+  <project path="external/redroid-prebuilts" name="WayDroid-ATV/android_external_redroid-prebuilts" remote="ghub" clone-depth="1" revision="048531b1934af0e5785e93556c740005d3f7e7cb" upstream="refs/heads/master" />
+  <project path="external/rust/android-crates-io" name="WayDroid-ATV/android_external_rust_android-crates-io" clone-depth="1" remote="ghub" revision="32955bf235953880a7e812904c1f726b9266d071" upstream="refs/heads/android17-release" />
+</manifest>

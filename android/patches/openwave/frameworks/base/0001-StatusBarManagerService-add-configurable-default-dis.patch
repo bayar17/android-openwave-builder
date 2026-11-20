@@ -1,0 +1,68 @@
+From d7882ad5c687d8c78025dd9714a31703720f8322 Mon Sep 17 00:00:00 2001
+From: Kiyanoush BAYAR <kiyanoushbayar@gmail.com>
+Date: Fri, 20 Nov 2026 13:22:19 +0300
+Subject: [PATCH 1/2] StatusBarManagerService: add configurable default disable
+ flags
+
+Two framework integers, config_statusBarDefaultDisableFlags and
+config_statusBarDefaultDisable2Flags, are OR-ed into the flags that
+StatusBarManagerService sends to SystemUI. Both default to 0, so
+behaviour is unchanged unless a product overlay sets them.
+
+Change-Id: Ie914d88aaa6d69723ab6b33687562289a377e725
+---
+ core/res/res/values/config.xml                         |  2 ++
+ core/res/res/values/symbols.xml                        |  2 ++
+ .../server/statusbar/StatusBarManagerService.java      | 10 +++++++++-
+ 3 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
+index a19202ff1..952196800 100644
+--- a/core/res/res/values/config.xml
++++ b/core/res/res/values/config.xml
+@@ -2528,6 +2528,8 @@
+     <bool name="config_showDefaultEmergency">false</bool>
+     <!-- Whether the default home settings should be shown. -->
+     <bool name="config_showDefaultHome">true</bool>
++    <integer name="config_statusBarDefaultDisableFlags">0</integer>
++    <integer name="config_statusBarDefaultDisable2Flags">0</integer>
+     <!-- The name of the package that will hold the call redirection role by default. -->
+     <string name="config_defaultCallRedirection" translatable="false"></string>
+     <!-- The name of the package that will hold the call screening role by default. -->
+diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
+index f20a2b6a0..de0850bd8 100644
+--- a/core/res/res/values/symbols.xml
++++ b/core/res/res/values/symbols.xml
+@@ -3314,6 +3314,8 @@
+   <java-symbol type="bool" name="config_forceWindowDrawsStatusBarBackground" />
+   <java-symbol type="integer" name="config_navBarOpacityMode" />
+   <java-symbol type="integer" name="config_navBarInteractionMode" />
++  <java-symbol type="integer" name="config_statusBarDefaultDisableFlags" />
++  <java-symbol type="integer" name="config_statusBarDefaultDisable2Flags" />
+   <java-symbol type="bool" name="config_navBarCanMove" />
+   <java-symbol type="bool" name="config_navBarTapThrough" />
+   <java-symbol type="bool" name="config_imeDrawsImeNavBar" />
+diff --git a/services/core/java/com/android/server/statusbar/StatusBarManagerService.java b/services/core/java/com/android/server/statusbar/StatusBarManagerService.java
+index 34aa2d86a..d60d9186d 100644
+--- a/services/core/java/com/android/server/statusbar/StatusBarManagerService.java
++++ b/services/core/java/com/android/server/statusbar/StatusBarManagerService.java
+@@ -2698,7 +2698,15 @@ public class StatusBarManagerService extends IStatusBarService.Stub implements D
+                 net |= rec.getFlags(which);
+             }
+         }
+-        return net;
++        return net | getDefaultDisableFlags(which);
++    }
++
++    private int getDefaultDisableFlags(int which) {
++        final int flags = mContext.getResources().getInteger(which == 1
++                ? R.integer.config_statusBarDefaultDisableFlags
++                : R.integer.config_statusBarDefaultDisable2Flags);
++        return flags
++                & (which == 1 ? StatusBarManager.DISABLE_MASK : StatusBarManager.DISABLE2_MASK);
+     }
+ 
+     // ================================================================================
+-- 
+2.53.0
+

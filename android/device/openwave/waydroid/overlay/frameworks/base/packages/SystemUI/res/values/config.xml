@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="config_hideStatusBarWindow">true</bool>
+    <string name="config_navBarLayout" translatable="false">space[.5W];back[1WC];space[.5W]</string>
+    <string name="config_navBarLayoutQuickstep" translatable="false">space[.5W];back[1WC];space[.5W]</string>
+    <string name="config_navBarLayoutHandle" translatable="false">space[.5W];back[1WC];space[.5W]</string>
+</resources>

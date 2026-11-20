@@ -1,0 +1,32 @@
+From 63a7e6032408ac341f68fc8d018233fc2f1ffab4 Mon Sep 17 00:00:00 2001
+From: Kiyanoush BAYAR <kiyanoushbayar@gmail.com>
+Date: Fri, 20 Nov 2026 19:39:15 +0300
+Subject: [PATCH] version: honour OPENWAVE_BUILD_DATE for reproducible builds
+
+LINEAGE_BUILD_DATE comes from the current date, which ends up in the
+version strings and image properties. When OPENWAVE_BUILD_DATE is set,
+use it instead; behaviour is unchanged when it is not set.
+
+Change-Id: I50d2c5178c71f43505396618514007007e836e73
+---
+ config/version.mk | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/config/version.mk b/config/version.mk
+index bc3fc56..5a04eaf 100644
+--- a/config/version.mk
++++ b/config/version.mk
+@@ -1,7 +1,9 @@
+ PRODUCT_VERSION_MAJOR = 24
+ PRODUCT_VERSION_MINOR = 0
+ 
+-ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
++ifneq ($(OPENWAVE_BUILD_DATE),)
++    LINEAGE_BUILD_DATE := $(OPENWAVE_BUILD_DATE)
++else ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
+     LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
+ else
+     LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d)
+-- 
+2.53.0
+

@@ -1,0 +1,41 @@
+From 50f2ce21a545270f37476cde78406af5407ffbde Mon Sep 17 00:00:00 2001
+From: SupeChicken666 <me@supechicken666.dev>
+Date: Sun, 1 Mar 2026 17:05:13 +0800
+Subject: [PATCH] ashmem: Bypass memfd name check when readlink fails with
+ EPERM
+
+Adapted from waydroid-patches/base-patches-37 (system/core 0019).
+The original returned true on EPERM, which would also skip the seal
+check added for b/498720726. Here only the /memfd: name check is
+skipped; the F_SEAL_GROW and F_SEAL_SHRINK check still runs.
+
+Change-Id: I1e18593070df7a7d4e632ca29584e1b7d4ec06f7
+---
+ libcutils/ashmem-dev.cpp | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/libcutils/ashmem-dev.cpp b/libcutils/ashmem-dev.cpp
+index 7f4d4473d..ff7d353c6 100644
+--- a/libcutils/ashmem-dev.cpp
++++ b/libcutils/ashmem-dev.cpp
+@@ -198,11 +198,12 @@ static bool is_memfd_fd(int fd) {
+     std::string fd_path = android::base::StringPrintf("/proc/self/fd/%d", fd);
+     std::string result;
+     if (!android::base::Readlink(fd_path, &result)) {
+-        ALOGE("readlink(%s) failed: %m", fd_path.c_str());
+-        return false;
+-    }
+-
+-    if (!result.starts_with("/memfd:")) {
++        if (errno != EPERM) {
++            ALOGE("readlink(%s) failed: %m", fd_path.c_str());
++            return false;
++        }
++        ALOGW("readlink(%s) failed: %m", fd_path.c_str());
++    } else if (!result.starts_with("/memfd:")) {
+         return false;
+     }
+ 
+-- 
+2.53.0
+

@@ -1,0 +1,14 @@
+android_app_import {
+    name: "TINH",
+    apk: "TINH.apk",
+    presigned: true,
+    preprocessed: true,
+    privileged: true,
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-com.openwave.tinh.xml",
+    src: "privapp-permissions-com.openwave.tinh.xml",
+    sub_dir: "permissions",
+    filename_from_src: true,
+}

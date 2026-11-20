@@ -1,0 +1,24 @@
+From 6877e48fa9567825e3f13c1313a78d0ccdd2bdab Mon Sep 17 00:00:00 2001
+From: Kiyanoush BAYAR <kiyanoushbayar@gmail.com>
+Date: Fri, 20 Nov 2026 13:29:05 +0300
+Subject: [PATCH] BoardConfigExtra: keep SELinux neverallow validation enabled
+
+SELINUX_IGNORE_NEVERALLOWS skips neverallow checking for the whole policy.
+vendor/extra only adds rootfs labels and a private sepolicy directory, so
+the override is not needed to build and weakens the policy checks.
+---
+ BoardConfigExtra.mk | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/BoardConfigExtra.mk b/BoardConfigExtra.mk
+index 426ca04..f2555e4 100644
+--- a/BoardConfigExtra.mk
++++ b/BoardConfigExtra.mk
+@@ -21,4 +21,3 @@ BOARD_ROOT_EXTRA_FOLDERS := odm_extra vendor_extra mnt_extra run var tmp
+ 
+ # Sepolicy
+ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(EXTRA_VENDOR_PATH)/sepolicy/private
+-SELINUX_IGNORE_NEVERALLOWS := true
+-- 
+2.53.0
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <bool name="def_lockscreen_disabled">true</bool>
+    <bool name="def_show_ime_with_hard_keyboard">true</bool>
+    <integer name="def_heads_up_enabled">0</integer>
+</resources>

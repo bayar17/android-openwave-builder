@@ -1,0 +1,28 @@
+From 59a7126bda4bd80bf6cba8212048b3e85efc094b Mon Sep 17 00:00:00 2001
+From: SupeChicken666 <me@supechicken666.dev>
+Date: Sat, 28 Feb 2026 15:18:05 +0800
+Subject: [PATCH] Fix building on A16 (rebased onto lineage-24.0 by hand)
+
+Context of libstagefright cflags changed upstream, so the patch from
+waydroid-patches/base-patches-37 (frameworks/av 0028) was ported manually.
+
+Change-Id: Ic5cca0de67411481d506298ef9b61b166ee24102
+---
+ media/libstagefright/Android.bp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/media/libstagefright/Android.bp b/media/libstagefright/Android.bp
+index 73faf3a..91e0770 100644
+--- a/media/libstagefright/Android.bp
++++ b/media/libstagefright/Android.bp
+@@ -396,6 +396,7 @@ cc_library {
+         "-Werror",
+         "-Wno-error=deprecated-declarations",
+         "-Wno-multichar",
++        "-Wno-unused-but-set-variable",
+     ] + select(soong_config_variable("stagefright", "target_disable_thumbnail_block_model"), {
+         true: ["-DDISABLE_BLOCK_MODEL"],
+         default: [],
+-- 
+2.53.0
+

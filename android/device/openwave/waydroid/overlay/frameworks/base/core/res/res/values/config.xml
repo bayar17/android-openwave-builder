@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <bool name="config_showNavigationBar">true</bool>
+    <integer name="config_navBarInteractionMode">0</integer>
+    <bool name="config_freeformWindowManagement">true</bool>
+    <integer name="config_maxUiWidth">0</integer>
+    <bool name="config_disableLockscreenByDefault">true</bool>
+    <bool name="config_enableWallpaperService">false</bool>
+    <integer name="config_statusBarDefaultDisableFlags">0x930000</integer>
+    <integer name="config_statusBarDefaultDisable2Flags">7</integer>
+    <bool name="config_dreamsSupported">false</bool>
+    <bool name="config_dreamsEnabledByDefault">false</bool>
+    <bool name="config_dreamsActivatedOnDockByDefault">false</bool>
+    <string name="config_dreamsDefaultComponent" translatable="false"></string>
+</resources>
